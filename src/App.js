@@ -26,8 +26,13 @@ import AddIcon from '@material-ui/icons/Add';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 import AddRecordDialog from './AddRecordDialog'
+import HelpingStep from './HelpingStep'
 
 import Collapse from '@material-ui/core/Collapse';
+
+import PieA from './PieA'
+import LevelBadge from './LevelBadge'
+import AddGoalDialog from './AddGoalDialog'
 
 const styles = {
   root: {
@@ -56,7 +61,8 @@ const styles2 = theme => ({
 const mapStateToProps = stateRedux => {
 	return {
     records: stateRedux.records,
-    openRecordsModal: stateRedux.openRecordsModal
+    openRecordsModal: stateRedux.openRecordsModal,
+    goals: stateRedux.goals
 	};
 };
 
@@ -73,11 +79,11 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Plannee
           </Typography>
-          <Button color="inherit">Your Goal</Button>
+          <Button color="inherit" onClick={() => dispatch({ type: "toggleGoalModal" })}>Add Goal</Button>
           <Button color="inherit" onClick={() => dispatch({ type: "toggleRecordsModal" })}>Revenue and Expense Records</Button>
         </Toolbar>
         <Collapse in={collapseShow} timeout="auto" unmountOnExit>
-          <Button color="inherit">Your Goal</Button>
+          <Button color="inherit" onClick={() => dispatch({ type: "toggleGoalModal" })}>Add Goal</Button>
           <Button color="inherit" onClick={() => dispatch({ type: "toggleRecordsModal" })}>Revenue and Expense Records</Button>
         </Collapse>
       </AppBar>
@@ -138,20 +144,72 @@ RecordsTable = withStyles(styles2)(connect(mapStateToProps)(RecordsTable))
 
 class App extends Component {
   render() {
-    const {records, openRecordsModal} = this.props;
+    const {records, openRecordsModal, goals} = this.props;
     
     return (
       <div className="App">
         <ButtonAppBar></ButtonAppBar>
-        <div className="bodyDiv">
+        <div style={{display:"flex", alignItems:"center", padding:10}}>
+          <LevelBadge></LevelBadge>
           <div>
-            <div><b>อยากได้รถ</b></div>
-            <LinearProgress variant="determinate" value={75} />
-          </div>
+            <Typography variant="h4" style={{margin:0,marginLeft:10}}>
+              Welcome! Chomtana
+            </Typography>     
+            <Typography variant="body1" style={{margin:0,marginLeft:10}}>
+              Level 5 <LinearProgress variant="determinate" value={80} />
+            </Typography>     
+          </div>   
+        </div>
+        <div className="bodyDiv">
+          <Typography variant="h4" gutterBottom>
+            Next Reward For Level 6
+          </Typography>
+        </div>
+        <div className="bodyDiv">
+          <Typography variant="h4" gutterBottom>
+            Goals
+          </Typography>
+          {goals.map((goal)=>(goal.active?<>
+            <Paper style={{padding:10}}>
+              <Typography variant="h5" gutterBottom>{goal.name}
+                <Typography variant="body1" gutterBottom>
+                  <i>({goal.around} THB)</i>
+                </Typography>
+              </Typography>
+
+              <LinearProgress variant="determinate" value={goal.percent} />
+              <div style={{
+                display:"flex",
+                justifyContent:"space-between"
+              }}>
+                <Typography variant="body1" gutterBottom>
+                  Before: {goal.before} month remaining
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  {goal.percent} %
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                  After: {goal.after} month remaining
+                </Typography>
+              </div>
+              <HelpingStep 
+                steps={goal.steps}
+                stepsContent={goal.stepsContent}
+                activeStep={goal.activeStep}
+              ></HelpingStep>
+              <PieA></PieA>
+            </Paper>
+            <br></br>
+          </>:""))}
+          
+          <Typography variant="h4" gutterBottom>
+            Stats
+          </Typography>
         </div>
         <Modal open={openRecordsModal} style={{overflow:"scroll"}}>
           <RecordsTable></RecordsTable>
         </Modal>
+        <AddGoalDialog></AddGoalDialog>
       </div>
     );
   }
