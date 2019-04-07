@@ -11,6 +11,7 @@ import SaveIcon from '@material-ui/icons/Save';
 
 import Typography from '@material-ui/core/Typography';
 
+import { connect } from 'react-redux'
 
 const styles = theme => ({
   root: {
@@ -79,14 +80,16 @@ class LevelBadge extends React.Component {
     const buttonClassname = classNames({
       [classes.buttonSuccess]: success,
     });
+    
+    const {level, exp} = this.props;
 
     return (
       <div className={classes.root}>
         <div className={classes.wrapper}>
           <Fab color="primary" className={buttonClassname}>
-            <Typography variant="h5" color="inherit">5</Typography>
+            <Typography variant="h5" color="inherit">{level}</Typography>
           </Fab>
-          <CircularProgress size={68} className={classes.fabProgress} variant="static" value={70}></CircularProgress>
+          <CircularProgress size={68} className={classes.fabProgress} variant="static" value={exp}></CircularProgress>
         </div>
       </div>
     );
@@ -97,4 +100,15 @@ LevelBadge.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LevelBadge);
+const mapStateToProps = stateRedux => {
+	return {
+    records: stateRedux.records,
+    openRecordsModal: stateRedux.openRecordsModal,
+    goals: stateRedux.goals,
+    achivements: stateRedux.achivements,
+    level: stateRedux.level,
+    exp: stateRedux.exp
+	};
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(LevelBadge));

@@ -85,7 +85,7 @@ class AddGoalDialog extends React.Component {
             <TextField
               margin="dense"
               name="duration"
-              label="Duration (in years, 3+ years)"
+              label="Duration (in years)"
               type="number"
               onChange={this.handleInputChange}
               fullWidth

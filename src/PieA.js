@@ -4,9 +4,9 @@ import {
 } from 'recharts';
 
 const data01 = [
-  { name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 }, { name: 'Group D', value: 200 },
-  { name: 'Group E', value: 278 }, { name: 'Group F', value: 189 },
+  { name: 'Eating', value: 0.275 * 15000 }, { name: 'Accomodation', value: 0.15 * 15000 },
+  { name: 'Electricity', value: 0.05 * 15000 }, { name: 'Water', value: 0.025 * 15000 },
+  { name: 'Children', value: 0.40 * 15000 }, { name: 'Other', value: 0.10 * 15000 },
 ];
 
 const data02 = [

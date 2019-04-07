@@ -107,7 +107,7 @@ class HelpingStep extends React.Component {
             </Step>
           ))}
         </Stepper>
-        {activeStep === steps.length && (
+        {false && (
           <Paper square elevation={0} className={classes.resetContainer}>
             <Typography>All steps completed - you&apos;re finished</Typography>
             <Button onClick={this.handleReset} className={classes.button}>
