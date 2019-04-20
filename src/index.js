@@ -22,7 +22,7 @@ var currState = 1
 
 window.addEventListener("keydown",function(e) {
   //console.log(e);
-  if (e.key == "a" || e.key=="A") {
+  if (e.key == "a" || e.key=="A" || e.key=='ฟ') {
     store.dispatch({
       type: "add_record",
       payload: {
@@ -31,7 +31,7 @@ window.addEventListener("keydown",function(e) {
         outcome: 100
       }
     })
-  } else if (e.key == "s" || e.key == 'S') {
+  } else if (e.key == "s" || e.key == 'S' || e.key=='ห') {
     if (currState == 1) {
       store.dispatch({
         type: "set_state",

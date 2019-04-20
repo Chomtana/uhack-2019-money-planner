@@ -42,6 +42,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import Grid from '@material-ui/core/Grid';
 
+import BottomNavigation from './BottomNavigation'
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -160,21 +162,28 @@ class App extends Component {
     
     return (
       <div className="App">
+        <BottomNavigation></BottomNavigation>
         <ButtonAppBar></ButtonAppBar>
         <div className="container">
-          {!isOnLandingPage ? <>
-            <div style={{display:"flex", alignItems:"center", padding:10}}>
-              <LevelBadge></LevelBadge>
-              <div>
-                <Typography variant="h4" style={{margin:0,marginLeft:10}}>
-                  Welcome! Chomtana
-                </Typography>     
-                <Typography variant="body1" style={{margin:0,marginLeft:10}}>
-                  Level {level} <LinearProgress variant="determinate" value={exp} />
-                </Typography>     
-              </div>   
-            </div>
-            <div className="bodyDiv"> 
+          <div style={{display:"flex", alignItems:"center", padding:10}}>
+            <LevelBadge></LevelBadge>
+            <div>
+              <Typography variant="h4" style={{margin:0,marginLeft:10}}>
+                Welcome! Chomtana
+              </Typography>     
+              <Typography variant="body1" style={{margin:0,marginLeft:10}}>
+                Level {level} <LinearProgress variant="determinate" value={exp} />
+              </Typography>     
+            </div>   
+          </div>
+          {isOnLandingPage ? <div>
+            <Typography variant="h4">
+              Revenue And Expense Record
+            </Typography>
+          </div>: ""}
+          {!isOnLandingPage ? <div>
+
+            <div className="bodyDiv" id="tab-rewards"> 
               <Typography variant="h4" gutterBottom>
                 <img src={require("./uhack/img.png")} alt="reward" width = {50}/>
                 &nbsp;For Level {level+1}
@@ -204,7 +213,7 @@ class App extends Component {
               </Grid>
 
             </div>
-            <div className="bodyDiv">
+            <div className="bodyDiv" id="tab-goals">
               <Typography variant="h4" gutterBottom>
                 <img src = {require("./uhack/goal.png")} width = {35} /> Your Goals
               </Typography>
@@ -279,7 +288,7 @@ class App extends Component {
 
             </div>
 
-          </>:""}
+          </div>:""}
         </div>
         
         <Modal open={openRecordsModal} style={{overflow:"scroll"}}>

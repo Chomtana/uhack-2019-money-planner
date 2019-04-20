@@ -20,11 +20,13 @@ export default class PieA extends PureComponent {
 
   render() {
     return (
-      <PieChart width={300} height={300}>
-        <Pie dataKey="value" isAnimationActive={false} data={data01} cx={150} cy={100} outerRadius={80} fill="#8884d8" label />
-        
-        <Tooltip />
-      </PieChart>
+      <div>
+        <PieChart width={300} height={300}>
+          <Pie dataKey="value" isAnimationActive={false} data={data01} cx={150} cy={100} outerRadius={80} fill="#8884d8" label />
+          
+          <Tooltip />
+        </PieChart>
+      </div>
     );
   }
 }

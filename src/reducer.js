@@ -114,18 +114,7 @@ const INIT_STATE = {
       active: false
     },
   ],
-  isOnLandingPage: false,
-  landingButtons: [
-    {
-      text: "Revenue and Expense Record"
-    },
-    {
-      text: "Add By Manual"
-    },
-    {
-      text: "Add By Voice"
-    }
-  ]
+  isOnLandingPage: false
 };
 
 export default (state = INIT_STATE, action) => {
