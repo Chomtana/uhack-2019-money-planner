@@ -158,7 +158,7 @@ class App extends Component {
     const {records, openRecordsModal, goals, achivements, level, exp} = this.props;
     
     return (
-      <div className="App">
+      <div className="App" >
         <ButtonAppBar></ButtonAppBar>
         <div style={{display:"flex", alignItems:"center", padding:10}}>
           <LevelBadge></LevelBadge>
@@ -173,7 +173,8 @@ class App extends Component {
         </div>
         <div className="bodyDiv">
           <Typography variant="h4" gutterBottom>
-            Next Reward For Level {level+1}
+          <img src={require("./uhack/img.png")} alt="reward" width = {50}/>
+                For Level {level+1}
           </Typography>
           <Grid container spacing={16}>
             {achivements.map((ac)=>ac.unlock==level+1?
@@ -202,7 +203,8 @@ class App extends Component {
         </div>
         <div className="bodyDiv">
           <Typography variant="h4" gutterBottom>
-            Goals
+              <h1>Your Goal</h1>
+            <img src = {require("./uhack/goal.png")} width = {300} />
           </Typography>
           {goals.map((goal,goali)=>(goal.active?<>
             <Paper style={{padding:10}}>
