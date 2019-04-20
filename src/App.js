@@ -176,7 +176,8 @@ class App extends Component {
             </div>
             <div className="bodyDiv"> 
               <Typography variant="h4" gutterBottom>
-                Next Reward For Level {level+1}
+                <img src={require("./uhack/img.png")} alt="reward" width = {50}/>
+                &nbsp;For Level {level+1}
               </Typography>
               <Grid container spacing={16}>
                 {achivements.map((ac)=>ac.unlock==level+1?
@@ -205,7 +206,7 @@ class App extends Component {
             </div>
             <div className="bodyDiv">
               <Typography variant="h4" gutterBottom>
-                Goals
+                <img src = {require("./uhack/goal.png")} width = {35} /> Your Goals
               </Typography>
               {goals.map((goal,goali)=>(goal.active?<>
                 <Paper style={{padding:10}}>
