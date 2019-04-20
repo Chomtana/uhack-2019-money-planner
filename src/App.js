@@ -73,7 +73,8 @@ const mapStateToProps = stateRedux => {
     goals: stateRedux.goals,
     achivements: stateRedux.achivements,
     level: stateRedux.level,
-    exp: stateRedux.exp
+    exp: stateRedux.exp,
+    isOnLandingPage: stateRedux.isOnLandingPage
 	};
 };
 
@@ -155,125 +156,131 @@ RecordsTable = withStyles(styles2)(connect(mapStateToProps)(RecordsTable))
 
 class App extends Component {
   render() {
-    const {records, openRecordsModal, goals, achivements, level, exp} = this.props;
+    const {records, openRecordsModal, goals, achivements, level, exp, isOnLandingPage} = this.props;
     
     return (
       <div className="App">
         <ButtonAppBar></ButtonAppBar>
-        <div style={{display:"flex", alignItems:"center", padding:10}}>
-          <LevelBadge></LevelBadge>
-          <div>
-            <Typography variant="h4" style={{margin:0,marginLeft:10}}>
-              Welcome! Chomtana
-            </Typography>     
-            <Typography variant="body1" style={{margin:0,marginLeft:10}}>
-              Level {level} <LinearProgress variant="determinate" value={exp} />
-            </Typography>     
-          </div>   
-        </div>
-        <div className="bodyDiv">
-          <Typography variant="h4" gutterBottom>
-            Next Reward For Level {level+1}
-          </Typography>
-          <Grid container spacing={16}>
-            {achivements.map((ac)=>ac.unlock==level+1?
-              <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
-                <Card>
-                  <CardActionArea>
-                    <CardMedia
-                      style={{height:200}}
-                      image={ac.picture}
-                      title={ac.title}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {ac.title}
-                      </Typography>
-                      <Typography component="p">
-                        {ac.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            :"")}
-          </Grid>
-
-        </div>
-        <div className="bodyDiv">
-          <Typography variant="h4" gutterBottom>
-            Goals
-          </Typography>
-          {goals.map((goal,goali)=>(goal.active?<>
-            <Paper style={{padding:10}}>
-              <Typography variant="h5" gutterBottom>{goal.name}
-                <Typography variant="body1" gutterBottom>
-                  <i>({goal.around} THB)</i>
-                </Typography>
+        <div className="container">
+          {!isOnLandingPage ? <>
+            <div style={{display:"flex", alignItems:"center", padding:10}}>
+              <LevelBadge></LevelBadge>
+              <div>
+                <Typography variant="h4" style={{margin:0,marginLeft:10}}>
+                  Welcome! Chomtana
+                </Typography>     
+                <Typography variant="body1" style={{margin:0,marginLeft:10}}>
+                  Level {level} <LinearProgress variant="determinate" value={exp} />
+                </Typography>     
+              </div>   
+            </div>
+            <div className="bodyDiv"> 
+              <Typography variant="h4" gutterBottom>
+                Next Reward For Level {level+1}
               </Typography>
+              <Grid container spacing={16}>
+                {achivements.map((ac)=>ac.unlock==level+1?
+                  <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
+                    <Card>
+                      <CardActionArea>
+                        <CardMedia
+                          style={{height:200}}
+                          image={ac.picture}
+                          title={ac.title}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="h2">
+                            {ac.title}
+                          </Typography>
+                          <Typography component="p">
+                            {ac.description}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </Grid>
+                :"")}
+              </Grid>
 
-              <LinearProgress variant="determinate" value={goal.percent} />
-              <div style={{
-                display:"flex",
-                justifyContent:"space-between"
-              }}>
-                {goal.percent < 100 ? <>
-                <Typography variant="body1" gutterBottom>
-                  Before: {parseInt(goal.before/12)} years {goal.before%12} months remaining
-                </Typography>
-                <Typography variant="body1" gutterBottom>
-                  {goal.percent} %
-                </Typography>
-                <Typography variant="body1" gutterBottom>
-                  After: {parseInt(goal.after/12)} years {goal.after%12} months remaining
-                </Typography>
-                </>
-                : <>                
-                  <Typography variant="body1" gutterBottom>
-                    &nbsp;
+            </div>
+            <div className="bodyDiv">
+              <Typography variant="h4" gutterBottom>
+                Goals
+              </Typography>
+              {goals.map((goal,goali)=>(goal.active?<>
+                <Paper style={{padding:10}}>
+                  <Typography variant="h5" gutterBottom>{goal.name}
+                    <Typography variant="body1" gutterBottom>
+                      <i>({goal.around} THB)</i>
+                    </Typography>
                   </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    Completed
-                  </Typography>
-                  <Typography variant="body1" gutterBottom>
-                    &nbsp;
-                  </Typography>
-                </>}
-              </div>
-              <HelpingStep 
-                steps={goal.steps}
-                stepsContent={goal.stepsContent}
-                activeStep={goal.activeStep}
-              ></HelpingStep>
-              <div style={{display:"flex",justifyContent:"space-around"}}>
-                <PieA></PieA>
-                  {achivements.map((ac)=>ac.place==goali?
-                    <Grid container style={{maxWidth: 450}}>
-                      <Card>
-                        <CardActionArea>
-                          <CardMedia
-                            style={{height:200}}
-                            image={ac.picture}
-                            title={ac.title}
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                              {ac.title}
-                            </Typography>
-                            <Typography component="p">
-                              {ac.description}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </Grid>
-                  :"")}
-              </div>
-            </Paper>
-            <br></br>
-          </>:""))}
 
+                  <LinearProgress variant="determinate" value={goal.percent} />
+                  <div style={{
+                    display:"flex",
+                    justifyContent:"space-between"
+                  }}>
+                    {goal.percent < 100 ? <>
+                    <Typography variant="body1" gutterBottom>
+                      Before: {parseInt(goal.before/12)} years {goal.before%12} months remaining
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      {goal.percent} %
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                      After: {parseInt(goal.after/12)} years {goal.after%12} months remaining
+                    </Typography>
+                    </>
+                    : <>                
+                      <Typography variant="body1" gutterBottom>
+                        &nbsp;
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        Completed
+                      </Typography>
+                      <Typography variant="body1" gutterBottom>
+                        &nbsp;
+                      </Typography>
+                    </>}
+                  </div>
+                  <HelpingStep 
+                    steps={goal.steps}
+                    stepsContent={goal.stepsContent}
+                    activeStep={goal.activeStep}
+                  ></HelpingStep>
+                  <div style={{display:"flex",justifyContent:"space-around"}}>
+                    <PieA></PieA>
+                      {achivements.map((ac)=>ac.place==goali?
+                        <Grid container style={{maxWidth: 450}}>
+                          <Card>
+                            <CardActionArea>
+                              <CardMedia
+                                style={{height:200}}
+                                image={ac.picture}
+                                title={ac.title}
+                              />
+                              <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                  {ac.title}
+                                </Typography>
+                                <Typography component="p">
+                                  {ac.description}
+                                </Typography>
+                              </CardContent>
+                            </CardActionArea>
+                          </Card>
+                        </Grid>
+                      :"")}
+                  </div>
+                </Paper>
+                <br></br>
+              </>:""))}
+
+            </div>
+
+          </>:""}
         </div>
+        
         <Modal open={openRecordsModal} style={{overflow:"scroll"}}>
           <RecordsTable></RecordsTable>
         </Modal>

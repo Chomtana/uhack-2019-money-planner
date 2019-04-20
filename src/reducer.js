@@ -113,6 +113,18 @@ const INIT_STATE = {
       percent: 10,
       active: false
     },
+  ],
+  isOnLandingPage: false,
+  landingButtons: [
+    {
+      text: "Revenue and Expense Record"
+    },
+    {
+      text: "Add By Manual"
+    },
+    {
+      text: "Add By Voice"
+    }
   ]
 };
 
