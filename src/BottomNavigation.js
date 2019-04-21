@@ -10,6 +10,10 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 
 import { connect } from 'react-redux'
 
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard'
+import GradeIcon from '@material-ui/icons/Grade'
+import TrackChangesIcon from '@material-ui/icons/TrackChanges'
+
 const mapStateToProps = stateRedux => {
 	return {
     records: stateRedux.records,
@@ -29,7 +33,7 @@ const styles = {
     bottom: 0,
     left: 0,
     width: "100%",
-    zIndex: 9999
+    zIndex: 999
   },
 };
 
@@ -54,9 +58,9 @@ class BottomNavigation extends React.Component {
           indicatorColor="secondary"
           textColor="secondary"
         >
-          <Tab icon={<PhoneIcon />} label="Summary"  />
-          <Tab icon={<FavoriteIcon />} label="Goals" href="#tab-goals"  />
-          <Tab icon={<PersonPinIcon />} label="Rewards" href="#tab-rewards" />
+          <Tab icon={<GradeIcon />} label="Status" href="#tab-status"  />
+          <Tab icon={<TrackChangesIcon />} label="Goals" href="#tab-goals"  />
+          <Tab icon={<CardGiftcardIcon />} label="Rewards" href="#tab-rewards" />
         </Tabs>
       </Paper>
     );

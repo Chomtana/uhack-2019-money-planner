@@ -40,21 +40,35 @@ const INIT_STATE = {
       place: -1
     },
     {
-      picture: "https://www.bts.co.th/files/uploads/home-page/bts-logo-main.jpg",
-      title: "10% BTS Discount",
-      description: "Enjoy your bts ride with 10% discount!!! While waiting for your car why not getting bts discount. Moreover, it is permanent discount.",
-      unlock: 6,
+      picture: "https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Grab_%28application%29_logo.svg/1280px-Grab_%28application%29_logo.svg.png",
+      title: "15% Grab Discount",
+      description: "Enjoy your grab ride with 15% discount!!! While waiting for your car why not getting grab discount. Moreover, it is permanent discount.",
+      unlock: 7,
       place: -1
     },
     {
-      picture: "https://www.extremeit.com/wp-content/uploads/2018/11/Benefits-Lenovo-Logo.jpg",
-      title: "5 - 20% discount at Lenovo",
-      description: "Get you new laptop or smart phone with 5 to 20 percent discount. Higher price, more discount, up to 20%. Limited to only one laptop or smart phone.",
+      picture: "https://www.bts.co.th/files/uploads/home-page/bts-logo-main.jpg",
+      title: "10% BTS Discount",
+      description: "Enjoy your bts ride with 10% discount!!! While waiting for your car why not getting bts discount. Moreover, it is permanent discount.",
+      unlock: 10,
+      place: -1
+    },
+    {
+      picture: "https://www.bts.co.th/files/uploads/home-page/bts-logo-main.jpg",
+      title: "15% BTS Discount",
+      description: "Enjoy your bts ride with 15% discount!!! While waiting for your car why not getting bts discount. Moreover, it is permanent discount.",
+      unlock: 10,
+      place: -1
+    },
+    {
+      picture: "https://png.pngtree.com/svg/20160322/35447ae59f.svg",
+      title: "LENOVO, For those who do",
+      description: "Get you new notebook at lenovo shop now. Lenovo stand for the brand that has very strong, fast and efficient notebook",
       unlock: 10,
       place: 0
     },
     {
-      picture: "https://www.extremeit.com/wp-content/uploads/2018/11/Benefits-Lenovo-Logo.jpg",
+      picture: "https://png.pngtree.com/svg/20160322/35447ae59f.svg",
       title: "5% EXTRA discount at Lenovo",
       description: "Get you an EXTRA ONE new laptop or smart phone with 5 percent discount !!!!!",
       unlock: 10,
@@ -62,9 +76,9 @@ const INIT_STATE = {
     },
     {
       picture: "https://cdn11.bigcommerce.com/s-sq9zkarfah/images/stencil/original/products/123100/210279/Toyota-Logo-Vinyl-Decal-Sticker__64572.1511168814.jpg?c=2&imbypass=on",
-      title: "2.5% discount at Toyota",
-      description: "Get your new car at TOYOTA with 2.5% discount!!! Limited to one car only.",
-      unlock: 7,
+      title: "Drive the happiness with TOYOTA",
+      description: "At TOYOTA, you not only get your car, but also your happiness.",
+      unlock: 10,
       place: 1
     }
   ],

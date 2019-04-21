@@ -165,7 +165,7 @@ class App extends Component {
         <BottomNavigation></BottomNavigation>
         <ButtonAppBar></ButtonAppBar>
         <div className="container">
-          <div style={{display:"flex", alignItems:"center", padding:10}}>
+          <div style={{display:"flex", alignItems:"center", padding:10}} id="tab-status">
             <LevelBadge></LevelBadge>
             <div>
               <Typography variant="h4" style={{margin:0,marginLeft:10}}>
@@ -291,7 +291,7 @@ class App extends Component {
           </div>:""}
         </div>
         
-        <Modal open={openRecordsModal} style={{overflow:"scroll"}}>
+        <Modal open={openRecordsModal} style={{overflow:"scroll",zIndex: 1000}}>
           <RecordsTable></RecordsTable>
         </Modal>
         <AddGoalDialog></AddGoalDialog>
