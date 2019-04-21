@@ -84,7 +84,7 @@ function ButtonAppBar(props) {
   const [collapseShow, setCollapseShow] = useState(false)
   const { classes, dispatch } = props;
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{position:"fixed",top:0,left:0,width:"100%",zIndex:2000}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={()=>setCollapseShow(!collapseShow)}>
