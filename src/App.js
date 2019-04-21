@@ -291,7 +291,7 @@ class App extends Component {
           </div>:""}
         </div>
         
-        <Modal open={openRecordsModal} style={{overflow:"scroll",zIndex: 1000}}>
+        <Modal open={openRecordsModal} style={{overflow:"scroll",zIndex: 1000,marginTop:40}}>
           <RecordsTable></RecordsTable>
         </Modal>
         <AddGoalDialog></AddGoalDialog>

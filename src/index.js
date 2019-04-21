@@ -198,3 +198,14 @@ window.addEventListener("keydown",function(e) {
     currState++;
   }
 })
+
+
+for(var navi of document.getElementsByClassName("bottom-navi-btn")) {
+  navi.addEventListener("click",function(e) {
+    setTimeout(function() {
+      window.scrollBy({
+        top: -70
+      });
+    },100)
+  })
+}
