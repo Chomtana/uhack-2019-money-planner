@@ -60,7 +60,7 @@ class BottomNavigation extends React.Component {
         >
           <Tab icon={<GradeIcon />} label="Status" href="#tab-status" className="bottom-navi-btn" />
           <Tab icon={<TrackChangesIcon />} label="Goals" href="#tab-goals" className="bottom-navi-btn"  />
-          <Tab icon={<CardGiftcardIcon />} label="Rewards" href="#tab-rewards" className="bottom-navi-btn" />
+          <Tab icon={<CardGiftcardIcon />} label="Rewards" href="#tab-rewards" className="bottom-navi-btn" style={{display:"none"}}/>
         </Tabs>
       </Paper>
     );

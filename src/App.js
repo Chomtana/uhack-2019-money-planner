@@ -183,7 +183,7 @@ class App extends Component {
           </div>: ""}
           {!isOnLandingPage ? <div>
 
-            <div className="bodyDiv" id="tab-rewards"> 
+            <div className="bodyDiv" id="tab-rewards" style={{display:"none"}}> 
               <Typography variant="h4" gutterBottom>
                 <img src={require("./uhack/img.png")} alt="reward" width = {50}/>
                 &nbsp;For Level {level+1}
@@ -258,10 +258,11 @@ class App extends Component {
                     stepsContent={goal.stepsContent}
                     activeStep={goal.activeStep}
                   ></HelpingStep>
-                  <div style={{display:"flex",justifyContent:"space-around"}}>
-                    <PieA></PieA>
+                  <div style={{display:"flex",justifyContent:"space-around",flexDirection:"column",alignItems:"center"}}>
+                    <div style={{maxWidth: 300}}><PieA></PieA></div>
+                    <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
                       {achivements.map((ac)=>ac.place==goali?
-                        <Grid container style={{maxWidth: 450}}>
+                        <Grid container style={{maxWidth: 450,margin:5}}>
                           <Card>
                             <CardActionArea>
                               <CardMedia
@@ -281,6 +282,7 @@ class App extends Component {
                           </Card>
                         </Grid>
                       :"")}
+                    </div>
                   </div>
                 </Paper>
                 <br></br>

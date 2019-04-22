@@ -68,6 +68,20 @@ const INIT_STATE = {
       place: 0
     },
     {
+      picture: "https://ih1.redbubble.net/image.517392525.3904/pp,550x550.u1.jpg",
+      title: "MSI, Symbol of gaming notebook",
+      description: "Want some new gamining notebook? Buy it at MSI. Moreover, MSI notebook can also be used to train machine learning model.",
+      unlock: 10,
+      place: 0
+    },
+    {
+      picture: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fewanspence%2Ffiles%2F2019%2F01%2FMSFT_SurfacePro6_PR001.jpg",
+      title: "New Surface Pro!",
+      description: "Surface Pro is a notebook that designed for your work. It not only a computer but also a tool to take note no matter where you are.",
+      unlock: 10,
+      place: 0
+    },
+    {
       picture: "https://png.pngtree.com/svg/20160322/35447ae59f.svg",
       title: "5% EXTRA discount at Lenovo",
       description: "Get you an EXTRA ONE new laptop or smart phone with 5 percent discount !!!!!",
