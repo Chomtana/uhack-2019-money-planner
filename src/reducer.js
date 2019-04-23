@@ -22,6 +22,7 @@ const INIT_STATE = {
   openRecordsModal: false,
   openAddRecordDialog: false,
   openGoalModal: false,
+  openCameraDialog: false,
   level: 5,
   exp: 80,
   achivements: [
@@ -158,6 +159,8 @@ export default (state = INIT_STATE, action) => {
       return { ...state, openAddRecordDialog: !state.openAddRecordDialog };
     case "toggleGoalModal":
       return { ...state, openGoalModal: !state.openGoalModal };
+    case "toggleCameraDialog":
+      return { ...state, openCameraDialog: !state.openCameraDialog };
     case "enableGoal":
       state.goals[action.payload].active = true;
       return { ...state, goals: _.cloneDeep(state.goals) };

@@ -43,6 +43,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 
 import BottomNavigation from './BottomNavigation'
+import Camera from './Camera';
+import { Dialog } from '@material-ui/core';
 
 const styles = {
   root: {
@@ -76,7 +78,8 @@ const mapStateToProps = stateRedux => {
     achivements: stateRedux.achivements,
     level: stateRedux.level,
     exp: stateRedux.exp,
-    isOnLandingPage: stateRedux.isOnLandingPage
+    isOnLandingPage: stateRedux.isOnLandingPage,
+    openCameraDialog: stateRedux.openCameraDialog
 	};
 };
 
@@ -93,10 +96,12 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Plannee
           </Typography>
+          <Button color="inherit" onClick={() => dispatch({ type: "toggleCameraDialog" })}>Camera</Button>
           <Button color="inherit" onClick={() => dispatch({ type: "toggleGoalModal" })}>Add Goal</Button>
           <Button color="inherit" onClick={() => dispatch({ type: "toggleRecordsModal" })}>Revenue and Expense Records</Button>
         </Toolbar>
         <Collapse in={collapseShow} timeout="auto" unmountOnExit>
+          <Button color="inherit" onClick={() => dispatch({ type: "toggleCameraDialog" })}>Camera</Button>
           <Button color="inherit" onClick={() => dispatch({ type: "toggleGoalModal" })}>Add Goal</Button>
           <Button color="inherit" onClick={() => dispatch({ type: "toggleRecordsModal" })}>Revenue and Expense Records</Button>
         </Collapse>
@@ -158,7 +163,7 @@ RecordsTable = withStyles(styles2)(connect(mapStateToProps)(RecordsTable))
 
 class App extends Component {
   render() {
-    const {records, openRecordsModal, goals, achivements, level, exp, isOnLandingPage} = this.props;
+    const {records, openRecordsModal, goals, achivements, level, exp, isOnLandingPage, openCameraDialog} = this.props;
     
     return (
       <div className="App">
@@ -292,6 +297,10 @@ class App extends Component {
 
           </div>:""}
         </div>
+
+        <Dialog open={openCameraDialog}>
+          <Camera></Camera>
+        </Dialog>
         
         <Modal open={openRecordsModal} style={{overflow:"scroll",zIndex: 1000,marginTop:40}}>
           <RecordsTable></RecordsTable>
